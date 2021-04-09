@@ -40,8 +40,18 @@ Write-Output "Compiling."
 C:\Program` Files\AutoHotkey\Compiler\Ahk2Exe.exe /in "$path\Keyboardy.ahk" /out "$path\Keyboardy.exe"
 Write-Output "Finished compiling."
 
+# Create a scheduled task to run Keyboardy on login or startup
+$Action = New-ScheduledTaskAction -Execute "$path\Keyboardy.exe"
+$Trigger = New-ScheduledTaskTrigger -AtLogOn 
+$Settings = New-ScheduledTaskSettingsSet -MultipleInstances Parallel 
+$Principal = New-ScheduledTaskPrincipal -RunLevel Highest -LogonType Interactive -UserId 'Abdulrhman'
+$Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings -Principal $Principal
+#Unregister-ScheduledTask -TaskName 'Keyboardy startup'
+Register-ScheduledTask -TaskName 'Keyboardy startup' -InputObject $Task
+
+
 $startupPath = "C:\Users\Abdulrhman\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
 echo "Moving exe to startup"
-Move-Item -Path "$path\Keyboardy.exe" -Destination "$startupPath"  -Force
+Copy-Item -Path "$path\Keyboardy.exe" -Destination "$startupPath"  -Force
 echo "Moved"
 Read-Host -Prompt "Press Enter to exit"
