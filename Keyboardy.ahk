@@ -41,7 +41,7 @@ if Count >= 3
     return
 }
 send {\}
-return
+
 
 $]::
 OutputDebug, % thiveModeTimer
@@ -73,6 +73,9 @@ return
 
 
 #If activator
+Numpad9::
+    send ^
+return 
 $;::
 OutputDebug, % thiveModeTimer
 If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
@@ -136,11 +139,9 @@ q::
 return
 w::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd"))
+    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
     {
-        if(l="EN"){
-            send {O}
-        }
+        send {O}
     }
     else if(GetkeyState("NumpadSub","P")){
         send {o}

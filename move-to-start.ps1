@@ -49,9 +49,4 @@ $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings 
 #Unregister-ScheduledTask -TaskName 'Keyboardy startup'
 Register-ScheduledTask -TaskName 'Keyboardy startup' -InputObject $Task
 
-
-$startupPath = "C:\Users\Abdulrhman\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
-echo "Moving exe to startup"
-Copy-Item -Path "$path\Keyboardy.exe" -Destination "$startupPath"  -Force
-echo "Moved"
 Read-Host -Prompt "Press Enter to exit"
