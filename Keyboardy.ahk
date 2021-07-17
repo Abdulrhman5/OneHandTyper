@@ -40,8 +40,8 @@ if Count >= 3
         activator := True
     return
 }
-send {\}
-
+send {vkDC}
+return
 
 $]::
 OutputDebug, % thiveModeTimer
@@ -68,14 +68,12 @@ if Count >= 3
         ExitApp
     }
 }
-send {]}
+send {vkDD} ; DD = ]}
 return
 
 
 #If activator
-Numpad9::
-    send ^
-return 
+
 $;::
 OutputDebug, % thiveModeTimer
 If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
@@ -99,49 +97,30 @@ if Count >= 3
     }
     return
 }
-send {;}
+send {vkBA}
 return
 
 
 q::
     l := GKL()
     if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
-        if(l="EN"){
-            sendInput P
-        }
-        else{
-            send {ج}
-        }
+        send +{p}
     }
     else if(GetkeyState("NumpadSub","P")){
-        if(l="EN"){
-            sendInput p
-        }
-        else{
-            send {ح}
-        }
+        send {p}
     }
     else if(GetkeyState("NumpadAdd","P")){
-        if(l="EN"){
-            sendInput Q
-        }
-        else{
-        }
+        send +{q}
     }
     else {
-        if(l="EN"){
-            sendInput q
-        }
-        else{
-            send {ض}
-        }
+        send {q}
     }
 return
 w::
     l := GKL()
     if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
     {
-        send {O}
+        send +{o}
     }
     else if(GetkeyState("NumpadSub","P")){
         send {o}
@@ -201,10 +180,10 @@ return
 a::
     l := GKL()
     if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
-        send +{;}
+        send +{vkBA} ; BA = ;:
     }
     else if(GetkeyState("NumpadSub","P")){
-        send {;} 
+        send {vkBA} 
     }
     else if(GetkeyState("NumpadAdd","P")){
         send +{a}
@@ -277,92 +256,39 @@ z::
     l := GKL()
     if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
     {
-        if(l="EN")
-        {
-            send ?
-        }
-        else
-        {
-            send {ط}
-        }
+        send +{vkBF}
     }
     else if(GetkeyState("NumpadSub","P"))
     {
-        if(l="EN")
-        {
-            send /
-        }
-        else
-        {
-            send {ظ}
-        }
+        send {vkBF}
     }
     else if(GetkeyState("NumpadAdd","P"))
     {
-        if(l="EN")
-        {
-            send Z
-        }
-        else
-        {
-            send /
-        }
+        send +{z}
     }
     else
     {
-        if(l="EN")
-        {
-            send z
-        }
-        else
-        {
-            send {ئ}
-        }
+        send {z}
     }
 return
 
 x::
     l := GKL()
     if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
-    {
-        if(l="EN")
-        {
-            send <
-        }
-        else
-        {
-            send {؟}
-        }
+    {       
+        send +{vkBC}
     }
     else if(GetkeyState("NumpadSub","P"))
     {
-        if(l="EN")
-        {
-            send {,}
-        }
-        else
-        {
-            send {ز}
-        }
+        send {vkBC}
     }
     else if(GetkeyState("NumpadAdd","P"))
     {
-        if(l="EN"){
-            send X
-        }
-        else{
-            send {,}
-        }
+        send +{x}
     }
     else
     {
-        if(l="EN"){
-            send x
-        }
-        else
-        {
-            send {ء}
-        }
+        send {x}
     }
 return
 
@@ -370,45 +296,19 @@ c::
     l := GKL()
     if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
     {
-        if(l="EN"){
-            send {ASC 62}
-        }
-        else{
-            send {.}
-        }
+        send +{vkBE}
     }
     else if(GetkeyState("NumpadSub","P"))
     {
-        if(l="EN")
-        {
-            send {.}
-        }
-        else
-        {
-            send {و}
-        }
+        send {vkBE}
     }
     else if(GetkeyState("NumpadAdd","P"))
     {
-        if(l="EN")
-        {
-            send C
-        }
-        else
-        {
-            send {.}
-        }
+        send +{C}
     }
     else
     {
-        if(l="EN")
-        {
-            send c
-        }
-        else
-        {
-            send {ؤ}
-        }
+        send {c}
     }
 return
 
@@ -554,39 +454,20 @@ return
     }
 return
 
+
 `::
     l := GKL()
     if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
-        if(l="EN"){
-            send {"}
-        }
-        else{
-            send {"}
-        }
+        send +{vkDE} ;DE = double and single quote
     }
     else if(GetkeyState("NumpadSub","P")){
-        if(l="EN")
-        {
-            send {'}
-        }
-        else{
-            send {ذ}
-        }
+        send {vkDE}
     }
     else if(GetkeyState("NumpadAdd","P")){
-        if(l="EN"){
-            send {~}
-        }
-        else{
-        }
+        send +{vkC0} ; C0 = ~`
     }
     else {
-        if(l="EN"){
-            send {``}
-        }
-        else{
-            send {د}
-        }
+        send {vkC0}
     }
 return
 space::
@@ -701,32 +582,39 @@ Return
 
 Tab::
     if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
-        {send {{}
-}
-else if(GetkeyState("NumpadSub","P"))
-    {send {[}
-}
-else if(GetkeyState("NumpadAdd","P"))
-    {send {O}
-}
-else
-    {send {Tab}
-}
+    {
+        send +{vkDB}
+    }
+    else if(GetkeyState("NumpadSub","P"))
+    {
+        send {vkDB}
+    }
+    else if(GetkeyState("NumpadAdd","P"))
+    {
+    }
+    else
+    {
+        send {Tab}
+    }
+
 return
 
 capslock::
     if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
-    {send {}}
-}
-else if(GetkeyState("NumpadSub","P"))
-    {send {]}
-}
-else if(GetkeyState("NumpadAdd","P"))
-    {send {>}
-}
-else
-    {send {Enter}
-}
+    {
+        send +{vkDD}
+    }
+    else if(GetkeyState("NumpadSub","P"))
+    {
+        send {vkDD}
+    }
+    else if(GetkeyState("NumpadAdd","P"))
+    {
+    }
+    else
+    {
+        send {Enter}
+    }
 return
 
 F7::
