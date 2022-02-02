@@ -1,3 +1,5 @@
+#MaxHotkeysPerInterval 200
+
 activator := True
 thiefModeTimer = 400
 thiefMode := False
