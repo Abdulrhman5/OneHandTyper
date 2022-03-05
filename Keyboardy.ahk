@@ -9,7 +9,7 @@ thiefMode := False
 
 
 $\::
-If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
+If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey <  timer )
    Count++
 Else
     Count := 1
@@ -28,7 +28,7 @@ send {vkDC}
 return
 
 $]::
-If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
+If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
    Count++
 Else
     Count := 1
@@ -58,7 +58,7 @@ return
 #If activator
 
 $;::
-If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
+If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
    Count++
 Else
     Count := 1
