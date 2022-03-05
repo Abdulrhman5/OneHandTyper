@@ -4,12 +4,11 @@ shiftFlag := False
 reflectFlag := False
 
 activator := True
-thiefModeTimer = 400
+timer = 400
 thiefMode := False  
 
 
 $\::
-OutputDebug, % thiveModeTimer
 If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
    Count++
 Else
@@ -29,7 +28,6 @@ send {vkDC}
 return
 
 $]::
-OutputDebug, % thiveModeTimer
 If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
    Count++
 Else
@@ -60,7 +58,6 @@ return
 #If activator
 
 $;::
-OutputDebug, % thiveModeTimer
 If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
    Count++
 Else
