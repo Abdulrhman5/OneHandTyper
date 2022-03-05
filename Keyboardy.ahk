@@ -1,8 +1,11 @@
 #MaxHotkeysPerInterval 200
 
+shiftFlag := False
+reflectFlag := False
+
 activator := True
 thiefModeTimer = 400
-thiefMode := False
+thiefMode := False  
 GKL()
 {
     if !ThreadId := DllCall("user32.dll\GetWindowThreadProcessId", "Ptr", WinActive("A"), "UInt", 0, "UInt")
@@ -105,13 +108,13 @@ return
 
 q::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{p}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {p}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{q}
     }
     else {
@@ -120,14 +123,14 @@ q::
 return
 w::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send +{o}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {o}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{w}
     }
     else {
@@ -136,13 +139,13 @@ w::
 return
 e::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{i}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {i}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{e}
     }
     else {
@@ -151,13 +154,13 @@ e::
 return
 r::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{u}
     }
-    else if(GetkeyState("Numpadsub","P")){
+    else if(reflectFlag){
         send {u}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{r}
     }
     else {
@@ -166,13 +169,13 @@ r::
 return
 t::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{y}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {y}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{t}
     }
     else {
@@ -181,13 +184,13 @@ t::
 return
 a::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{vkBA} ; BA = ;:
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {vkBA} 
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{a}
     }
     else {
@@ -196,13 +199,13 @@ a::
 return
 s::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{l}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {l}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{s}
     }
     else {
@@ -211,13 +214,13 @@ s::
 return
 d::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{k}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {k}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{d}
     }
     else {
@@ -226,13 +229,13 @@ d::
 return
 f::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{j}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {j}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{f}
     }
     else {
@@ -241,13 +244,13 @@ f::
 return
 g::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{h}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {h}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{g}
     }
     else {
@@ -256,15 +259,15 @@ g::
 return
 z::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send +{vkBF}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {vkBF}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send +{z}
     }
@@ -276,15 +279,15 @@ return
 
 x::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {       
         send +{vkBC}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {vkBC}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send +{x}
     }
@@ -296,15 +299,15 @@ return
 
 c::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send +{vkBE}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {vkBE}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send +{C}
     }
@@ -316,13 +319,13 @@ return
 
 v::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{m}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {m}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{v}
     }
     else {
@@ -331,13 +334,13 @@ v::
 return
 b::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{n}
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {n}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{b}
     }
     else {
@@ -345,15 +348,15 @@ b::
     }
 return
 1::
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {^}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send 6
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send {!}
     }
@@ -363,15 +366,15 @@ return
     }
 return
 2::
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {&}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send 7
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send @
     }
@@ -382,15 +385,15 @@ return
 return
 
 3::
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {*}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {8}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send {#}
     }
@@ -400,15 +403,15 @@ return
 return
 
 4::
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {(}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send 9
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send {$}
     }
@@ -419,15 +422,15 @@ return
 return
 
 5::
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {)}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send 0
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send {ASC 37}
     }
@@ -438,15 +441,15 @@ return
 return
 
 6::
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {_}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {-}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send {+}
     }
@@ -459,13 +462,13 @@ return
 
 `::
     l := GKL()
-    if(GetkeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P")){
+    if(reflectFlag && shiftFlag){
         send +{vkDE} ;DE = double and single quote
     }
-    else if(GetkeyState("NumpadSub","P")){
+    else if(reflectFlag){
         send {vkDE}
     }
-    else if(GetkeyState("NumpadAdd","P")){
+    else if(shiftFlag){
         send +{vkC0} ; C0 = ~`
     }
     else {
@@ -473,15 +476,15 @@ return
     }
 return
 space::
-    if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {backspace}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {backspace}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send {delete}
     }
@@ -491,15 +494,15 @@ space::
     }
 return
 k::
-    if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {Home}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {Right}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send ^{Right}
     }
@@ -509,15 +512,15 @@ k::
     }
 Return
 j::
-    if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {End}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {Down}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send ^{Down}
     }
@@ -527,15 +530,15 @@ j::
     }
 return
 y::
-    if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {End}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {Right}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send ^{Right}
     }
@@ -546,15 +549,15 @@ y::
 Return
 
 h::
-    if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send {Home}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {Left}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send ^{Left}
     }
@@ -565,13 +568,13 @@ h::
 Return
 
 u::
-    if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
             {send {Home}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
         {send {Up}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
         send ^{Up}
     }
@@ -583,15 +586,15 @@ u::
 Return
 
 Tab::
-    if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send +{vkDB}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {vkDB}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
     }
     else
@@ -602,15 +605,15 @@ Tab::
 return
 
 capslock::
-    if(GetKeyState("NumpadSub","P") && GetKeyState("NumpadAdd","P"))
+    if(reflectFlag && shiftFlag)
     {
         send +{vkDD}
     }
-    else if(GetkeyState("NumpadSub","P"))
+    else if(reflectFlag)
     {
         send {vkDD}
     }
-    else if(GetkeyState("NumpadAdd","P"))
+    else if(shiftFlag)
     {
     }
     else
@@ -620,7 +623,7 @@ capslock::
 return
 
 F7::
-    if(GetkeyState("NumpadSub","P"))
+    if(reflectFlag)
     {
         send {Media_Prev}
     }
@@ -630,7 +633,7 @@ F7::
 return
 
 F8::
-    if(GetkeyState("NumpadSub","P"))
+    if(reflectFlag)
     {
         send {Media_Play_Pause}
     }
@@ -639,7 +642,7 @@ F8::
     }
 return
 F9::
-    if(GetkeyState("NumpadSub","P"))
+    if(reflectFlag)
     {
         send {Media_Next}
     }
@@ -648,7 +651,7 @@ F9::
     }
 return
 F10::
-    if(GetkeyState("NumpadSub","P"))
+    if(reflectFlag)
     {
         send {Volume_Down}
     }
@@ -657,7 +660,7 @@ F10::
     }
 return
 F11::
-    if(GetkeyState("NumpadSub","P"))
+    if(reflectFlag)
     {
         send {Volume_UP}
     }
@@ -666,7 +669,7 @@ F11::
     }
 return
 F12::
-    if(GetkeyState("NumpadSub","P"))
+    if(reflectFlag)
     {
         send {Volume_Mute}
     }
@@ -676,7 +679,7 @@ F12::
 return
 
 Numpadmult::
-    if(GetkeyState("NumpadSub","P"))
+    if(reflectFlag)
     {
         send {delete}
     }
@@ -684,10 +687,22 @@ Numpadmult::
         send {backspace}
     }
 return
+
+
 NumpadAdd::
+    shiftFlag := True
 return
+NumpadAdd up::
+    shiftFlag := False
+return
+
+
 NumpadSub::
-    return
+    reflectFlag := True
+return
+NumpadSub up::
+    reflectFlag := False
+return
 
 #If activator And thiefMode 
 Numpad2::
