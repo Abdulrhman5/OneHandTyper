@@ -529,10 +529,12 @@ Return
 
 u::
     if(reflectFlag && shiftFlag)
-            {send {Home}
+    {
+        send {Home}
     }
     else if(reflectFlag)
-        {send {Up}
+    {
+        send {Up}
     }
     else if(shiftFlag)
     {
@@ -541,7 +543,42 @@ u::
     else
     {
         send {u}
+    }
+Return
 
+n::
+    if(reflectFlag && shiftFlag)
+    {
+    }
+    else if(reflectFlag)
+    {
+        send +{Left}
+    }
+    else if(shiftFlag)
+    {
+        send ^+{Left}
+    }
+    else
+    {
+        send {n}
+    }
+Return
+
+m::
+    if(reflectFlag && shiftFlag)
+    {
+    }
+    else if(reflectFlag)
+    {
+        send +{Right}
+    }
+    else if(shiftFlag)
+    {
+        send ^+{Right}
+    }
+    else
+    {
+        send {m}
     }
 Return
 
