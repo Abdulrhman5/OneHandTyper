@@ -438,15 +438,12 @@ return
 space::
     if(reflectFlag && shiftFlag)
     {
-        send {backspace}
     }
     else if(reflectFlag)
     {
-        send {backspace}
     }
     else if(shiftFlag)
     {
-        send {delete}
     }
     else
     {
@@ -619,6 +616,33 @@ capslock::
     }
 return
 
+F1::
+    send ^{Delete}
+return 
++F1::
+    send  {F1}
+return 
+
+F2:: 
+    send {Delete}
+return
++F2:: 
+    send {F2}
+return 
+
+F3::
+    send {Backspace}
+return 
++F3:: 
+    send {F3}
+return 
+
+F4:: 
+    send ^{BackSpace}
+return 
++F4:: 
+    send {F4}
+return 
 F7::
     if(reflectFlag)
     {
