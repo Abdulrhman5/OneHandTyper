@@ -4,85 +4,60 @@ shiftFlag := False
 reflectFlag := False
 
 activator := True
-thiefModeTimer = 400
-thiefMode := False  
-GKL()
-{
-    if !ThreadId := DllCall("user32.dll\GetWindowThreadProcessId", "Ptr", WinActive("A"), "UInt", 0, "UInt")
-        return false
-    if !KBLayout := DllCall("user32.dll\GetKeyboardLayout", "UInt", ThreadId, "UInt")
-        return false
-    x := KBLayout & 0xFFFF
-    if ( x=0x0809||x=0x0409
-        ||x=0x0409||x=0x1009||x=0x2409
-    ||x=0x1809||x=0x2009||x=0x1409
-    ||x=0x3409||x=0x1c09||x=0x2c09
-    ||x=0x2809)
-    return "EN"
-    else if( x=0x1401||x=0x3c01||x=0x3c01
-        ||x=0x0c01||x=0x0801||x=0x2c01
-    ||x=0x3401||x=0x3001||x=0x1001
-    ||x=0x1801||x=0x2001||x=0x4001
-    ||x=0x0401||x=0x2801||x=0x1c01
-    ||x=0x3801||x=0x2401)
-    return "AR"
-}
+timer = 400
+thiefMode := False 
 
 $\::
-OutputDebug, % thiveModeTimer
-If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
-   Count++
-Else
-    Count := 1
-if Count >= 3
-{
-    Loop, % Count - 1{ 
-        send {BackSpace}
+    If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
+        Count++
+    Else
+        Count := 1
+    if Count >= 3
+    {
+        Loop, % Count - 1{ 
+            send {BackSpace}
+        }
+        if activator
+            activator := False
+        else
+            activator := True
+        return
     }
-    if activator
-        activator := False
-    else
-        activator := True
-    return
-}
-send {vkDC}
+    send {vkDC}
 return
 
 $]::
-OutputDebug, % thiveModeTimer
-If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
-   Count++
-Else
-    Count := 1
-if Count >= 3
-{
-    Loop, % Count - 1{ 
-        send {BackSpace}
-    }
-    ; If the script is not elevated, relaunch as administrator and kill current instance:
-    full_command_line := DllCall("GetCommandLine", "str")
-    if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+    If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
+        Count++
+    Else
+        Count := 1
+    if Count >= 3
     {
-        try ; leads to having the script re-launching itself as administrator
-        {
-            if A_IsCompiled
-                Run *RunAs "Keyboardy.exe" /restart
-            else
-                Run *RunAs "%A_AhkPath%" /restart "Keyboardy.ahk"
+        Loop, % Count - 1{ 
+            send {BackSpace}
         }
-        ExitApp
+        ; If the script is not elevated, relaunch as administrator and kill current instance:
+        full_command_line := DllCall("GetCommandLine", "str")
+        if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+        {
+            try ; leads to having the script re-launching itself as administrator
+            {
+                if A_IsCompiled
+                    Run *RunAs "Keyboardy.exe" /restart
+                else
+                    Run *RunAs "%A_AhkPath%" /restart "Keyboardy.ahk"
+            }
+            ExitApp
+        }
     }
-}
-send {vkDD} ; DD = ]}
+    send {vkDD} ; DD = ]}
 return
-
 
 #If activator
 
 $;::
-OutputDebug, % thiveModeTimer
-If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < thiefModeTimer )
-   Count++
+If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
+    Count++
 Else
     Count := 1
 if Count >= 3
@@ -90,7 +65,7 @@ if Count >= 3
     Loop, % Count - 1{ 
         send {BackSpace}
     }
-    if thiefMode = True    
+    if thiefMode = True 
     {
         MsgBox, Thive mode deactiviated.
         thiefMode = False
@@ -100,14 +75,12 @@ if Count >= 3
         MsgBox, Thive mode activiated.
         thiefMode = True
     }
-    return
+return
 }
 send {vkBA}
 return
 
-
 q::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{p}
     }
@@ -122,7 +95,6 @@ q::
     }
 return
 w::
-    l := GKL()
     if(reflectFlag && shiftFlag)
     {
         send +{o}
@@ -138,7 +110,6 @@ w::
     }
 return
 e::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{i}
     }
@@ -153,7 +124,6 @@ e::
     }
 return
 r::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{u}
     }
@@ -168,7 +138,6 @@ r::
     }
 return
 t::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{y}
     }
@@ -183,7 +152,6 @@ t::
     }
 return
 a::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{vkBA} ; BA = ;:
     }
@@ -198,7 +166,7 @@ a::
     }
 return
 s::
-    l := GKL()
+    >>>>>>> 833e0836178d3cf19e581bc004fc3acfc2c914f2
     if(reflectFlag && shiftFlag){
         send +{l}
     }
@@ -213,7 +181,6 @@ s::
     }
 return
 d::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{k}
     }
@@ -228,7 +195,6 @@ d::
     }
 return
 f::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{j}
     }
@@ -243,7 +209,6 @@ f::
     }
 return
 g::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{h}
     }
@@ -258,7 +223,6 @@ g::
     }
 return
 z::
-    l := GKL()
     if(reflectFlag && shiftFlag)
     {
         send +{vkBF}
@@ -276,11 +240,9 @@ z::
         send {z}
     }
 return
-
 x::
-    l := GKL()
     if(reflectFlag && shiftFlag)
-    {       
+    { 
         send +{vkBC}
     }
     else if(reflectFlag)
@@ -298,7 +260,6 @@ x::
 return
 
 c::
-    l := GKL()
     if(reflectFlag && shiftFlag)
     {
         send +{vkBE}
@@ -318,7 +279,6 @@ c::
 return
 
 v::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{m}
     }
@@ -333,7 +293,6 @@ v::
     }
 return
 b::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{n}
     }
@@ -459,9 +418,7 @@ return
     }
 return
 
-
 `::
-    l := GKL()
     if(reflectFlag && shiftFlag){
         send +{vkDE} ;DE = double and single quote
     }
@@ -478,15 +435,12 @@ return
 space::
     if(reflectFlag && shiftFlag)
     {
-        send {backspace}
     }
     else if(reflectFlag)
     {
-        send {backspace}
     }
     else if(shiftFlag)
     {
-        send {delete}
     }
     else
     {
@@ -569,10 +523,12 @@ Return
 
 u::
     if(reflectFlag && shiftFlag)
-            {send {Home}
+    {
+        send {Home}
     }
     else if(reflectFlag)
-        {send {Up}
+    {
+        send {Up}
     }
     else if(shiftFlag)
     {
@@ -581,7 +537,42 @@ u::
     else
     {
         send {u}
+    }
+Return
 
+n::
+    if(reflectFlag && shiftFlag)
+    {
+    }
+    else if(reflectFlag)
+    {
+        send +{Left}
+    }
+    else if(shiftFlag)
+    {
+        send ^+{Left}
+    }
+    else
+    {
+        send {n}
+    }
+Return
+
+m::
+    if(reflectFlag && shiftFlag)
+    {
+    }
+    else if(reflectFlag)
+    {
+        send +{Right}
+    }
+    else if(shiftFlag)
+    {
+        send ^+{Right}
+    }
+    else
+    {
+        send {m}
     }
 Return
 
@@ -622,6 +613,33 @@ capslock::
     }
 return
 
+F1::
+    send ^{Delete}
+return 
++F1::
+    send {F1}
+return 
+
+F2:: 
+    send {Delete}
+return
++F2:: 
+    send {F2}
+return 
+
+F3::
+    send {Backspace}
+return 
++F3:: 
+    send {F3}
+return 
+
+F4:: 
+    send ^{BackSpace}
+return 
++F4:: 
+    send {F4}
+return 
 F7::
     if(reflectFlag)
     {
@@ -688,14 +706,12 @@ Numpadmult::
     }
 return
 
-
 NumpadAdd::
     shiftFlag := True
 return
 NumpadAdd up::
     shiftFlag := False
 return
-
 
 NumpadSub::
     reflectFlag := True
@@ -706,7 +722,7 @@ return
 
 #If activator And thiefMode 
 Numpad2::
-    send ^{v}
+send ^{v}
 Return
 
 Numpad3::
