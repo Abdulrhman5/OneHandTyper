@@ -166,7 +166,6 @@ a::
     }
 return
 s::
-    >>>>>>> 833e0836178d3cf19e581bc004fc3acfc2c914f2
     if(reflectFlag && shiftFlag){
         send +{l}
     }
