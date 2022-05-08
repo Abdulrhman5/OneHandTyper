@@ -5,61 +5,59 @@ reflectFlag := False
 
 activator := True
 timer = 400
-thiefMode := False  
-
+thiefMode := False 
 
 $\::
-If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey <  timer )
-   Count++
-Else
-    Count := 1
-if Count >= 3
-{
-    Loop, % Count - 1{ 
-        send {BackSpace}
+    If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
+        Count++
+    Else
+        Count := 1
+    if Count >= 3
+    {
+        Loop, % Count - 1{ 
+            send {BackSpace}
+        }
+        if activator
+            activator := False
+        else
+            activator := True
+        return
     }
-    if activator
-        activator := False
-    else
-        activator := True
-    return
-}
-send {vkDC}
+    send {vkDC}
 return
 
 $]::
-If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
-   Count++
-Else
-    Count := 1
-if Count >= 3
-{
-    Loop, % Count - 1{ 
-        send {BackSpace}
-    }
-    ; If the script is not elevated, relaunch as administrator and kill current instance:
-    full_command_line := DllCall("GetCommandLine", "str")
-    if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+    If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
+        Count++
+    Else
+        Count := 1
+    if Count >= 3
     {
-        try ; leads to having the script re-launching itself as administrator
-        {
-            if A_IsCompiled
-                Run *RunAs "Keyboardy.exe" /restart
-            else
-                Run *RunAs "%A_AhkPath%" /restart "Keyboardy.ahk"
+        Loop, % Count - 1{ 
+            send {BackSpace}
         }
-        ExitApp
+        ; If the script is not elevated, relaunch as administrator and kill current instance:
+        full_command_line := DllCall("GetCommandLine", "str")
+        if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+        {
+            try ; leads to having the script re-launching itself as administrator
+            {
+                if A_IsCompiled
+                    Run *RunAs "Keyboardy.exe" /restart
+                else
+                    Run *RunAs "%A_AhkPath%" /restart "Keyboardy.ahk"
+            }
+            ExitApp
+        }
     }
-}
-send {vkDD} ; DD = ]}
+    send {vkDD} ; DD = ]}
 return
-
 
 #If activator
 
 $;::
 If ( A_ThisHotkey = A_PriorHotkey and A_TimeSincePriorHotkey < timer )
-   Count++
+    Count++
 Else
     Count := 1
 if Count >= 3
@@ -67,7 +65,7 @@ if Count >= 3
     Loop, % Count - 1{ 
         send {BackSpace}
     }
-    if thiefMode = True    
+    if thiefMode = True 
     {
         MsgBox, Thive mode deactiviated.
         thiefMode = False
@@ -77,11 +75,10 @@ if Count >= 3
         MsgBox, Thive mode activiated.
         thiefMode = True
     }
-    return
+return
 }
 send {vkBA}
 return
-
 
 q::
     if(reflectFlag && shiftFlag){
@@ -244,7 +241,7 @@ z::
 return
 x::
     if(reflectFlag && shiftFlag)
-    {       
+    { 
         send +{vkBC}
     }
     else if(reflectFlag)
@@ -419,7 +416,6 @@ return
         send {=}
     }
 return
-
 
 `::
     if(reflectFlag && shiftFlag){
@@ -620,7 +616,7 @@ F1::
     send ^{Delete}
 return 
 +F1::
-    send  {F1}
+    send {F1}
 return 
 
 F2:: 
@@ -709,14 +705,12 @@ Numpadmult::
     }
 return
 
-
 NumpadAdd::
     shiftFlag := True
 return
 NumpadAdd up::
     shiftFlag := False
 return
-
 
 NumpadSub::
     reflectFlag := True
@@ -727,7 +721,7 @@ return
 
 #If activator And thiefMode 
 Numpad2::
-    send ^{v}
+send ^{v}
 Return
 
 Numpad3::
