@@ -431,21 +431,7 @@ return
         send {vkC0}
     }
 return
-space::
-    if(reflectFlag && shiftFlag)
-    {
-    }
-    else if(reflectFlag)
-    {
-    }
-    else if(shiftFlag)
-    {
-    }
-    else
-    {
-        send {space}
-    }
-return
+
 k::
     if(reflectFlag && shiftFlag)
     {
