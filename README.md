@@ -8,3 +8,16 @@ By using one hand and one finger, Keyboardy will help you keep your hand station
 
 ### Long answer:
 [See](https://keyboardy.net/Howto)
+
+
+# أصبحت الكتابة بلمسة واحدة أسرع.
+يمكنك الكتابة بيد واحدة بسرعة وبشكل حدسي ودون الحاجة إلى النظر إلى لوحة المفاتيح.
+
+## كيف يعمل؟
+
+### اجابة قصيرة:
+باستخدام يد واحدة وإصبع واحد ، سيساعدك Keyboardy على إبقاء يدك ثابتة مع تغيير المفاتيح الموجودة أسفل أصابعك. Keyboardy تقلب مفاتيح لوحة المفاتيح أفقيًا. لذا فإن مفتاح ** Q ** في لوحة مفاتيح QWERTY سيكون بمثابة ** Q ** و ** P **.
+
+
+### اجابة طويلة:
+[انظر] (https://keyboardy.net/Howto)
